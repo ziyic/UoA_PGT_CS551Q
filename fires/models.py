@@ -7,7 +7,7 @@ class Region(models.Model):
     ISOCODE = models.TextField(max_length=3)
     UNSDCODE = models.IntegerField()
     CIESINCODE = models.IntegerField()
-    Population = models.IntegerField()
+    Population = models.IntegerField(null=True)
     Area_sqkm = models.FloatField()
 
     def __str__(self):
@@ -15,14 +15,15 @@ class Region(models.Model):
                f'{self.CIESINCODE},{self.Population},{self.Area_sqkm}'
 
 
-class FileType(models.Model):
+class FireType(models.Model):
     id = models.AutoField(primary_key=True)
     type_name = models.TextField()
 
     def __str__(self):
         return f'{self.id},{self.type_name}'
 
-class FileTCC(models.Model):
+
+class FireTCC(models.Model):
     region = models.IntegerField()
     year = models.IntegerField()
     type = models.IntegerField()
