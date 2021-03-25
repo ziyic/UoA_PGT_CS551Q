@@ -24,10 +24,15 @@ class FireType(models.Model):
 
 
 class FireTCC(models.Model):
-    region = models.IntegerField()
+    region = models.ForeignKey(Region, on_delete=models.DO_NOTHING)
+    type = models.ForeignKey(FireType, on_delete=models.DO_NOTHING)
     year = models.IntegerField()
-    type = models.IntegerField()
     amount = models.FloatField()
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['region', 'type', 'year'], name='unique_fire')
+        ]
 
     def __str__(self):
         return f'{self.region},{self.year},{self.type},{self.amount}'

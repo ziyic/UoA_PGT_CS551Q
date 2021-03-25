@@ -31,15 +31,18 @@ class Command(BaseCommand):
                 ISOCODE=regions_data.iloc[i]['ISOCODE'],
                 UNSDCODE=regions_data.iloc[i]['UNSDCODE'],
                 CIESINCODE=regions_data.iloc[i]['UNSDCODE'],
-                # Population=row['Population'],
                 Area_sqkm=float(regions_data.iloc[i]['Area_sqkm'].replace(',', '')))
+
+        region_population_data = pd.read_csv(str(base_dir) + '/fires/Fires_data/TCC_All_fires.csv')
+        for i in range(0, len(region_population_data)):
+            pop = region_population_data.iloc[i]['country_pop'].replace(',', '')
+            Region.objects.filter(name=region_population_data.iloc[i]['COUNTRY']).update(Population=int(pop))
 
         fire_types = []
         for i in fire_list:
             fire_types.append(i.split('.')[0])
         for t in fire_types:
-            fire_type = FireType.objects.create(
-                type_name=t)
+            fire_type = FireType.objects.create(type_name=t)
 
         regions = list(Region.objects.all())
         f_types = list(FireType.objects.all())
@@ -53,20 +56,22 @@ class Command(BaseCommand):
                     for r in range(0, len(data)):
                         for region in regions:
                             if region.name == data.iloc[r]['COUNTRY']:
-                                fire_region = region.id
-                                for years in range(1997, 2015, 1):
+                                fire_region = region
+                                for years in range(1997, 2016, 1):
                                     if f_type.type_name == 'Total_Area_Burned':
                                         amount = data.iloc[r][f'Y{years}burned_ha']
+                                        t = FireType(id=f_type.id, type_name=f_type.type_name)
                                         fire = FireTCC.objects.create(
                                             region=fire_region,
                                             year=years,
-                                            type=f_type.id,
+                                            type=t,
                                             amount=float(amount.replace(',', '') if str(amount) != 'nan' else 0))
                                     else:
                                         amount = data.iloc[r][f'Y{years}TCC']
+                                        t = FireType(id=f_type.id, type_name=f_type.type_name)
                                         fire = FireTCC.objects.create(
                                             region=fire_region,
                                             year=years,
-                                            type=f_type.id,
+                                            type=t,
                                             amount=float(amount.replace(',', '') if str(amount) != 'nan' else 0))
         return
