@@ -57,7 +57,7 @@ class Command(BaseCommand):
                         for region in regions:
                             if region.name == data.iloc[r]['COUNTRY']:
                                 fire_region = region
-                                for years in range(1997, 2016, 1):
+                                for years in range(1997, 2015+1, 1):
                                     if f_type.type_name == 'Total_Area_Burned':
                                         amount = data.iloc[r][f'Y{years}burned_ha']
                                         t = FireType(id=f_type.id, type_name=f_type.type_name)

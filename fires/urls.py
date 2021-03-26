@@ -11,12 +11,7 @@ urlpatterns = [
     path('', views.index),
     path('regions', views.region_list),
     path('region/<int:id>', views.region_detail),
-    path('fire/<str:region>/<int:id>'),
-    path('fire/<str:region>/<str:type>'),
+    path('fire/<str:region>/<int:year>', views.fire_detail_by_year),
+    path('fire/<str:region>/<str:type>', views.fire_detail_by_type),
 
-
-
-    # path('fire/<int:id>')
-    # https://fire.heroku.com/region/<int:id>/fire/<int:id>
-    # https://fire.heroku.com/fire/<str:region>/<int:year
 ]

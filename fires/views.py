@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
@@ -11,7 +12,11 @@ def index(request):
 
 def region_list(request):
     regions = Region.objects.all()
-    return render(request, 'fires/regions.html', {'regions': regions})
+    paginator = Paginator(regions, 25)
+
+    page_num = request.GET.get('page')
+    page = paginator.get_page(page_num)
+    return render(request, 'fires/regions.html', {'page_obj': page})
 
 
 def region_detail(request, id):
@@ -26,7 +31,7 @@ def fire_detail_by_year(request, region, year):
         db_region = Region.objects.filter(id=i.region)
         if i.year == year and db_region == region:
             fires.append(i)
-    return render(request, 'fires/fire.html', {'fires': fires})
+    return render(request, 'fires/fire_year.html', {'fires': fires})
 
 
 def fire_detail_by_type(request, region, fire_type):
@@ -35,6 +40,6 @@ def fire_detail_by_type(request, region, fire_type):
     for i in db_fires:
         db_type = Region.objects.filter(type_name=i.type)
         db_region = Region.objects.filter(id=i.region)
-        if i.type == db_type and db_region == region:
+        if db_type.type_name == fire_type and db_region == region:
             fires.append(i)
-    return render(request, 'fires/fire.html', {'fires': fires})
+    return render(request, 'fires/fire_year.html', {'fires': fires})

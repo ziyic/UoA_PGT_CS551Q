@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ title }}</title>
 </head>
 <body>
     <h1>{{ title }}</h1>
-    <h2></h2>
-
+    <h2>The Global Fire Emissions Indicators, Country-Level Tabular Data: 1997-2015 contains country tabulations from 1997 to 2015 for the total area burned (hectares) and total carbon content (tons). The annual total area burned is for all fire types per country. There are two groups of total carbon content (TCC), annual totals for all six fire types per country and annual totals for each of six fire types per country which include Agricultura, Tropical Deforestation, Savanna, and Temperate forest fires.
+(PS: Although we have the data of Peat and Boreal, most of the data of both are zero and of little practical significance, so we decided not to show the data to refine our data.)</h2>
+    <a href="{% url 'region_list' %}">start here</a>
 </body>
 </html>
