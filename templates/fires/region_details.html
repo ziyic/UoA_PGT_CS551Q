@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div style="padding: 10%;">
+        <h1>Region detail</h1>
+        <table style="border: thick solid black;align-self: center;margin: auto;width: auto">
+            <tr >
+                <th style="border: thin solid black;">id</th>
+                <th style="border: thin solid black;">name</th>
+                <th style="border: thin solid black;">ISOCODE</th>
+                <th style="border: thin solid black;">UNSDCODE</th>
+                <th style="border: thin solid black;">CIESINCODE</th>
+                <th style="border: thin solid black;">Population</th>
+                <th style="border: thin solid black;">Area (sqkm)</th>
+            </tr>
+            <tr>
+                <td>{{region.id}}</td>
+                <td>{{region.name}}</td>
+                <td>{{region.ISOCODE}}</td>
+                <td>{{region.UNSDCODE}}</td>
+                <td>{{region.CIESINCODE}}</td>
+                <td>{{region.Population}}</td>
+                <td>{{region.Area_sqkm}}</td>
+            </tr>
+        </table>
+        <div>
+            <h2>
+                Fires by type
+            </h2>
+            <p>
+
+            </p>
+            <table style="align-self: center;margin: auto;border-collapse: separate;border-spacing: 5px;">
+                <tr >
+                    {% for type in types %}
+                        <td style="border: thin solid black;">
+                            <a href="{% url 'fire_detail_by_type' region=region type=type %}">{{type.type_name}}</a>
+                        </td>
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+        <div>
+            <h2>
+                Fires by year
+            </h2>
+            <p>
+
+            </p>
+            <table style="align-self: center;margin: auto;border-collapse: separate;border-spacing: 5px;">
+                <tr>
+                    {% for year in year_range %}
+                        <td style="border: thin solid black;"><a href="{% url 'fire_detail_by_year' region=region year=year %}">{{year}}</a></td>
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

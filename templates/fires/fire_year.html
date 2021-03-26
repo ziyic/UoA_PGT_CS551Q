@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fires in {{ region }}in year {{ year }}</title>
+</head>
+<body>
+    <div>
+        <h1>
+            TCC from various types of fires that occurred in {{ region }} in the year {{ year }}
+        </h1>
+        <table>
+            <tr>
+                <th>type</th>
+                <th>TCC amount/Total area burned</th>
+            </tr>
+            {% load type_filter %}
+            {% for fire in fires %}
+            <tr>
+                <td>{{ fire.type|fire_type }}</td>
+                <td>{{ fire.amount }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ type }}fires in {{ region }}</title>
+</head>
+<body>
+    <div>
+        <h1>
+            TCC from {{ type }} fires that occurred in {{ region }} from 1997 to 2015
+        </h1>
+        <table>
+            <tr>
+                <th>year</th>
+                <th>TCC amount/Total area burned</th>
+            </tr>
+            {% for fire in fires %}
+            <tr>
+                <td>{{ fire.year }}</td>
+                <td>{{ fire.amount }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
