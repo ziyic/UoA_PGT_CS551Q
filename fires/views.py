@@ -31,7 +31,7 @@ def fire_detail_by_year(request, region, year):
         db_region = Region.objects.filter(id=i.region)
         if i.year == year and db_region == region:
             fires.append(i)
-    return render(request, 'fires/fire_year.html', {'fires': fires})
+    return render(request, 'fires/fire_year.html', {'fires': fires, 'region': region, 'year': year})
 
 
 def fire_detail_by_type(request, region, fire_type):
@@ -42,4 +42,4 @@ def fire_detail_by_type(request, region, fire_type):
         db_region = Region.objects.filter(id=i.region)
         if db_type.type_name == fire_type and db_region == region:
             fires.append(i)
-    return render(request, 'fires/fire_year.html', {'fires': fires})
+    return render(request, 'fires/fire_year.html', {'fires': fires, 'region': region, 'type': db_type})
