@@ -13,14 +13,16 @@
             <th>UNSDCODE</th>
         </tr>
         {% for region in page_obj %}
+            <tr>
             <td>{{region.id}}</td>
             <td><a href="{%url 'region_detail' id=region.id %}">{{region.name}}</a></td>
             <td>{{region.ISOCODE}}</td>
             <td>{{region.UNSDCODE}}</td>
+            </tr>
         {% endfor %}
     </table>
 
-    <div class="pagination">
+    <div class="pagination" style="padding-left:75%">
         <span class="step-links">
             {% if page_obj.has_previous %}
                 <a href="?page=1">&laquo; first</a>

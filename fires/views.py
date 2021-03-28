@@ -21,17 +21,20 @@ def region_list(request):
 
 def region_detail(request, id):
     region = get_object_or_404(Region, id=id)
-    return render(request, 'fires/region_details.html', {'region': region})
+    types = FireTCC.objects.all()
+    return render(request, 'fires/region_details.html', {'region': region,
+                                                         'types': types,
+                                                         'year_range': range(1997, 2015+1, 1)})
 
 
 def fire_detail_by_year(request, region, year):
     fires = []
     db_fires = FireTCC.objects.all()
     for i in db_fires:
-        db_region = Region.objects.filter(id=i.region)
+        db_region = Region.objects.filter(id=i.region.id)
         if i.year == year and db_region == region:
             fires.append(i)
-    return render(request, 'fires/fire_year.html', {'fires': fires, 'region': region, 'year': year})
+    return render(request, 'fires/fire_year.html', {'fires': fires, 'region': region.id, 'year': year})
 
 
 def fire_detail_by_type(request, region, fire_type):
