@@ -7,7 +7,7 @@
 <body>
     <div style="padding: 10%;">
         <h1>Region detail</h1>
-        <table style="border: thick solid black;align-self: center;margin: auto;width: auto">
+        <table style="border: thick solid black;align-self: center;margin: auto;width: auto;border-collapse: separate;border-spacing: 10px;">
             <tr >
                 <th style="border: thin solid black;">id</th>
                 <th style="border: thin solid black;">name</th>
@@ -34,11 +34,12 @@
             <p>
 
             </p>
-            <table style="align-self: center;margin: auto;border-collapse: separate;border-spacing: 5px;">
+            <table style="align-self: center;margin: auto;border-collapse: separate;border-spacing: 10px;">
                 <tr >
                     {% for type in types %}
                         <td style="border: thin solid black;">
-                            <a href="{% url 'fire_detail_by_type' region=region type=type %}">{{type.type_name}}</a>
+                            <a href="{% url 'fire_detail_by_type' region=region.name fire_type=type.type_name %}">
+                                {{type.type_name}}</a>
                         </td>
                     {% endfor %}
                 </tr>
@@ -51,10 +52,10 @@
             <p>
 
             </p>
-            <table style="align-self: center;margin: auto;border-collapse: separate;border-spacing: 5px;">
+            <table style="align-self: center;margin: auto;border-collapse: separate;border-spacing: 10px;">
                 <tr>
                     {% for year in year_range %}
-                        <td style="border: thin solid black;"><a href="{% url 'fire_detail_by_year' region=region year=year %}">{{year}}</a></td>
+                        <td style="border: thin solid black;"><a href="{% url 'fire_detail_by_year' region=region.name year=year %}">{{year}}</a></td>
                     {% endfor %}
                 </tr>
             </table>
