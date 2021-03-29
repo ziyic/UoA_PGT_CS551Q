@@ -32,7 +32,10 @@ Individual projects, no contribution requirements
 
 ## Authors
 
-* [ziyic](https://github.com/ziyic)
+- [ziyic](https://github.com/ziyic)
+- [ADP666](https://github.com/ADP666)
+- [LoveZym](https://github.com/LoveZym)
+- [HUWEIYAO](https://github.com/HUWEIYAO)
 
 <!-- See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 -->
