@@ -32,17 +32,20 @@ class Command(BaseCommand):
                 UNSDCODE=regions_data.iloc[i]['UNSDCODE'],
                 CIESINCODE=regions_data.iloc[i]['UNSDCODE'],
                 Area_sqkm=float(regions_data.iloc[i]['Area_sqkm'].replace(',', '')))
+        print("region table parsed")
 
         region_population_data = pd.read_csv(str(base_dir) + '/fires/Fires_data/TCC_All_fires.csv')
         for i in range(0, len(region_population_data)):
             pop = region_population_data.iloc[i]['country_pop'].replace(',', '')
             Region.objects.filter(name=region_population_data.iloc[i]['COUNTRY']).update(Population=int(pop))
+        print("region table updated")
 
         fire_types = []
         for i in fire_list:
             fire_types.append(i.split('.')[0])
         for t in fire_types:
             fire_type = FireType.objects.create(type_name=t)
+        print("fire type table parsed")
 
         regions = list(Region.objects.all())
         f_types = list(FireType.objects.all())
@@ -74,4 +77,6 @@ class Command(BaseCommand):
                                             year=years,
                                             type=t,
                                             amount=float(amount.replace(',', '') if str(amount) != 'nan' else 0))
+        print('fire table parsed')
+        print('reset database finished')
         return
