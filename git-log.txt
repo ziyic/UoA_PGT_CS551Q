@@ -1,0 +1,38 @@
+* fda4d1e : deploy(All project) deployed to heroku with postgreSQL
+* 3623c1c : fix(fires/management/commands/parse_csv.py) Operational status indication text added
+* ddb0bc8 : deploy(Procfile) modify Procfile
+* 9771192 : deploy(setting.py) imported django_heroku package
+* c6f9e44 : deploy(requirements.txt) update project requirements list
+* 887a68a : deploy(runtime.txt) add file runtime.txt
+* 692fa01 : docs(README.md) update authors
+* 32c2ae1 : deploy(Procfile) modify Procfile
+* b81fa6f : deploy(Procfile) modify Procfile
+* c68e51f : deploy(Procfile) add Procfile
+* d0fbdbb : deploy(setting.py) add allowed hosts
+* 1c49bb1 : deploy(requirements.txt) update project requirements list
+* 7fca8c0 : deploy(requirements.txt) update project requirements list
+* 31c9eef : deploy(requirements.txt) add project requirements list
+*   fd2a52c : Merge pull request #3 from ziyic/dev
+|\  
+| * 80a713d : test(Test): Test phase complete
+| * 76b9658 : refactor(views): code review and refactor
+| * 5aa3e23 : test(Test): test and bug fixing
+| * b159bee : Merge branch 'dev' of github.com:ziyic/UoA_PGT_CS551Q
+|/| 
+| * 4f51fa9 : fix(views): code review and bug fix
+* | d8f1f45 : Merge pull request #2 from ziyic/dev
+|\| 
+| * 92e79e2 : feat(views): Almost finished with the view part
+| * 6a5b4da : feat(views): Construction and registration of views and routes, initialisation of templates
+| * 67ee67c : fix(data layer): code review & syntax error fixed
+* | 06a815f : Merge pull request #1 from ziyic/dev
+|\| 
+| * 742b04a : feat(data layer): Data import part of the code to achieve
+|/  
+* 7fd8674 : feat(data layer): Basic implementation of the 'region' part
+* 1ad9c12 : feat(data layer): Basic implementation of the 'region' part
+* 94f43ec : refactor(data layer): Generate data layer files
+* 3ea2a9a : refactor(all project): init project
+* 5ed46c7 : Update README.md
+* 8591533 : Update README.md
+* 70a1679 : Initial commit

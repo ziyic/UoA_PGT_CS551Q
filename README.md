@@ -8,11 +8,30 @@ This repository contains code written for the course Enterprise Software Develop
 
 ### Prerequisites
 
+- python:
+  * python-3.9.2:
+- requirements
+  * asgiref==3.3.1
+  * dj-database-url==0.5.0
+  * Django==3.1.7
+  * django-heroku==0.0.0
+  * gunicorn==20.1.0
+  * numpy>=1.19.5
+  * pandas>=1.1.5
+  * psycopg2-binary==2.8.6
+  * python-dateutil==2.8.1
+  * pytz==2021.1
+  * six==1.15.0
+  * sqlparse==0.4.1
+  * whitenoise==5.2.0
+
 ### Installing
 
 <!-- A step by step series of examples that tell you how to get a development env running -->
 
 ## Deployment
+
+This project is also deployed on Heroku, you can access it via this [link](https://fire-emissions-indicators.herokuapp.com/)
 
 <!-- Add additional notes about how to deploy this on a live system -->
 
@@ -23,11 +42,15 @@ This repository contains code written for the course Enterprise Software Develop
 
 ## Test
 
-## Deployment
+Using Django's built-in TestCase for client testing, the tests have all passed
+
+## The use of git in the project
+
+git was used as the VCS tool for the project, with all members involved
 
 ## Contributing
 
-Individual projects, no contribution requirements
+ this is a cousework project, no contribution requirements
 <!-- Please read [CONTRIBUTING.md](https://gist.github.com/ziyic/project_name/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us. -->
 
 ## Authors
