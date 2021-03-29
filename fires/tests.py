@@ -23,10 +23,10 @@ class MainTest(TestCase):
         """
 
         page_num = random.randint(1, 7)
-        res = self.client.get(f'/regions?page={page_num}')
-        self.assertEqual(res.status_code, 200)
-        self.assertContains(res, page_num)
-        self.assertTemplateUsed(res, "fires/regions.html")
+        res_region_list = self.client.get(f'/regions?page={page_num}')
+        self.assertEqual(res_region_list.status_code, 200)
+        self.assertContains(res_region_list, page_num)
+        self.assertTemplateUsed(res_region_list, "fires/regions.html")
         # test passed
 
     def test_region_detail(self):
@@ -39,10 +39,10 @@ class MainTest(TestCase):
         valid_id = random.randint(1, 5)
         invalid_id = random.randint(-5, -1)
         # invalid test
-        invalid_res = self.client.get("/region/{}".format(invalid_id))
+        invalid_res = self.client.get(f"/region/{invalid_id}")
         self.assertEqual(invalid_res.status_code, 404)
         # valid test
-        valid_res = self.client.get("/region/{}".format(valid_id))
+        valid_res = self.client.get(f"/region/{valid_id}")
         self.assertEqual(valid_res.status_code, 200)
         self.assertTemplateUsed(valid_res, "fires/region_details.html")
         self.assertContains(valid_res, valid_id)
@@ -62,20 +62,20 @@ class MainTest(TestCase):
         self.assertContains(res, random_year)
         self.assertContains(res, random_region)
         self.assertTemplateUsed(res, "fires/fire_year.html")
-        # test not passed
 
     def test_fire_detail_by_type(self):
         """
         Test fire detail by type page.
         :return:
         """
-        test_regions = ["Los Angeles", "San Fransisco", "Washington D.C"]
-        test_types = ["Big", "Large", "Horrible", "Small", "Middle"]
+        test_regions = ["China", "Australia", "United Kingdom of Great Britain and Northern Ireland"]
+        test_types = ["TCC_All_fires", "TCC_TEMF_Fires", "TCC_AGRI_fires",
+                      "Total_Area_Burned", "TCC_DEFO_fires", "TCC_SAVA_Fires"]
         random_region = random.choice(test_regions)
         random_type = random.choice(test_types)
-        res = self.client.get("fire/{}/{}".format(random_region, random_type))
+        res = self.client.get(f"/fire/{random_region}/{random_type}")
         self.assertContains(res, random_type)
         self.assertContains(res, random_region)
         self.assertEqual(res.status_code, 200)
-        self.assertTemplateUsed(res, "fires/fire_year.html")
+        self.assertTemplateUsed(res, "fires/fire_type.html")
         # test passed

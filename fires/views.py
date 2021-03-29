@@ -21,7 +21,6 @@ def region_list(request):
 
 def region_detail(request, id):
     region = get_object_or_404(Region, id=id)
-    print(region, type(region))
     types = FireType.objects.all()
     year_range = range(1997, 2015 + 1, 1)
     return render(request, 'fires/region_details.html', {'region': region,
@@ -38,7 +37,5 @@ def fire_detail_by_year(request, region, year):
 def fire_detail_by_type(request, region, fire_type):
     fire_region = get_object_or_404(Region, name=region)
     f_type = FireType.objects.filter(type_name=fire_type)
-    print(f_type,type(f_type))
-    print(f_type[0], type(f_type[0]))
     fires = FireTCC.objects.filter(region=Region(fire_region).id, type=f_type[0].id)
     return render(request, 'fires/fire_type.html', {'fires': fires, 'region': region, 'fire_type': f_type[0].type_name})
